@@ -642,6 +642,9 @@ footer .right-footer p a{
     position: relative;
     top: -280px;
 }
+.pozX:hover{
+    color: rgba(0, 174, 218, 1);
+}
 .clr-word{
     color:white;
 }
@@ -659,3 +662,6 @@ footer .right-footer p a{
     color: black;
     transition: 0.6s;
 }
+
+
+
