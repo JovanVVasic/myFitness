@@ -66,168 +66,428 @@ $(document).ready(function(){
   let nameSapmle = /^[A-ZČĆŠĐŽ][a-zčćšđž]{2,15}(\s[A-ZČĆŠĐŽ][a-zčćšđž]{2,15})?(\s[A-ZČĆŠĐŽ][a-zčćšđž]{2,20})\s*$/;
 
 
-  var modal = document.getElementById("otvori");
-  console.log(modal)
-  let otvorenModal = false;
-  modal.addEventListener("click", () => {
+  var jumpThis = document.getElementById("open");
+  let openThis = false;
+  jumpThis.addEventListener("click", () => {
   
-      //Pravljenje novih elemenata
-      if (!otvorenModal) {
-          otvorenModal = true;
-          console.log("wew");
+     
+      if (!openThis) {
+
+        openThis = true;
+
           let div = document.createElement("div");
           let div2 = document.createElement("div");
-          div2.setAttribute("class", "pozadina-siva")
-          div2.setAttribute("id", "divKontejner");
-          let divCentar = document.createElement("div");
-          let naslov = document.createElement("h2");
-          naslov.textContent = "Zakazivanje termina";
-          let forma = document.createElement("form")
-          forma.setAttribute("method", "post");
-          forma.setAttribute("id", "formaSastanak");
-          let zatvori = document.createElement("i")
-          zatvori.setAttribute("class", "fas fa-times pozX")
+          div2.setAttribute("class", "clr-back")
+          div2.setAttribute("id", "div-cont");
+
+          let centerDiv = document.createElement("div");
+          let title = document.createElement("h2");
+          title.textContent = "Schedule the training";
+
+          let from = document.createElement("form")
+          from.setAttribute("method", "post");
+          from.setAttribute("id", "meeting");
+
+          let close = document.createElement("i")
+          close.setAttribute("class", "fas fa-times pozX")
   
+          
+         
+         
+         
           let txtBox = document.createElement("input");
           txtBox.setAttribute("type", "text");
-          txtBox.setAttribute("placeholder", "Ime i prezime:");
+          txtBox.setAttribute("placeholder", "Full name:");
           txtBox.setAttribute("class", "form-control");
           txtBox.setAttribute("id", "txtBoxModal")
+
           let x1 = document.createElement("span");
-          x1.setAttribute("class", "crvenaSlova levo sakrij");
-          x1.setAttribute("id", "poljeImeD")
-          x1.textContent = "Pogresno ste uneli ime!"
+          x1.setAttribute("class", "clr-word hide");
+          x1.setAttribute("id", "d-name")
+          x1.textContent = "Wrong name!"
+
           let x2 = document.createElement("span");
-          x2.setAttribute("class", "crvenaSlova levo sakrij");
-          x2.textContent = "Niste izabrali datum!"
+          x2.setAttribute("class", "clr-word hide");
+          x2.textContent = "Choose the date!"
+
           let x3 = document.createElement("span");
-          x3.setAttribute("class", "crvenaSlova levo sakrij");
-          x3.textContent = "Niste izabrali vreme!"
+          x3.setAttribute("class", "clr-word hide");
+          x3.textContent = "Choose the time!"
+
           let x4 = document.createElement("p");
-          x4.setAttribute("class", "sakrij poslataFormaText")
-          x4.innerHTML = "Uspešno ste zakazali sastanak!";
-          let dugme = document.createElement("button")
-          dugme.setAttribute("type", "button")
-          dugme.setAttribute("class", "dugmeForma")
-          dugme.setAttribute("value", "Pošalji")
-          dugme.textContent = "Posalji"
-          let danasnjiDatum = new Date();
-          let god = danasnjiDatum.getFullYear();
-          let mesec = danasnjiDatum.getMonth() + 1;
-          let dan = danasnjiDatum.getDate() + 1;
-          let maxMesec = danasnjiDatum.getMonth() + 2;
-          let maxGodine = danasnjiDatum.getFullYear();
+          x4.setAttribute("class", "hide text-form-sent")
+          x4.innerHTML = "Training is scheduled!";
+
+          let btn = document.createElement("button")
+          btn.setAttribute("type", "button")
+          btn.setAttribute("class", "btn-form")
+          btn.setAttribute("value", "Send")
+          btn.textContent = "Send"
+
+
+
+
+
+          let mainDate = new Date();
+          let year = mainDate.getFullYear();
+          let month = mainDate.getMonth() + 1;
+          let day = mainDate.getDate() + 1;
+          let maxMonth = mainDate.getMonth() + 2;
+          let maxYear = mainDate.getFullYear();
   
-          if (mesec == 12) {
-              maxGodine++;
-              maxMesec = "01";
+          if (month == 12) {
+             maxYear++;
+              maxMonth = "01";
           }
-          if (mesec + 1 < 10)
-              mesec = `0${mesec}`;
-          if (mesec + 2 < 10)
-              maxMesec = `0${mesec}`
-          if (dan < 10)
-              dan = `0${dan}`;
-          console.log(god + "-" + mesec + "-" + dan)
-          console.log(maxGodine + "-" + maxMesec + "-" + dan)
+          if (month + 1 < 10)
+             month = `0${month}`;
+          if (month + 2 < 10)
+             maxMonth = `0${month}`
+          if (day < 10)
+             day = `0${day}`;
+          /* console.log(year + "-" + month + "-" + day)
+          console.log(maxYear + "-" + maxMonth + "-" + day) */
           let combo1 = document.createElement("input");
-          combo1.setAttribute("value", god + "-" + mesec + "-" + dan)
-          combo1.setAttribute("id", "terminVreme");
+          combo1.setAttribute("value", year + "-" + month + "-" + day)
+          combo1.setAttribute("id", "scheduleTime");
           combo1.setAttribute("type", "date");
           combo1.setAttribute("class", "form-control")
-          combo1.setAttribute("min", god + "-" + mesec + "-" + dan);
-          combo1.setAttribute("max", maxGodine + "-" + maxMesec + "-" + dan);
+          combo1.setAttribute("min", year + "-" + month + "-" + day);
+          combo1.setAttribute("max", maxYear + "-" + maxMonth + "-" + day);
   
+          
+          
+          
+          
           let combo2 = document.createElement("select");
-          combo2.setAttribute("id", "razlogSastanka");
+          combo2.setAttribute("id", "meeting-1");
           combo2.setAttribute("class", "form-control")
           let op = document.createElement("option");
-          op.setAttribute("value", "Izaberite vreme");
-          op.innerHTML = "Izaberite vreme";
+          op.setAttribute("value", "Choose your time");
+          op.innerHTML = "Choose your time";
           combo2.appendChild(op);
+
+
+
   
-          let sati = [10, 11, 12, 13, 14];
-          let minuti = [0, 30];
+          let h = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+          let min = [0];
   
-          for (let i = 0; i < sati.length; i++) {
+          for (let i = 0; i < h.length; i++) {
               let op1 = document.createElement("option");
-              op1.setAttribute("value", `${sati[i]}:${minuti[0]}`);
-              op1.innerHTML = `${sati[i]}:${minuti[0]}0`;
+              op1.setAttribute("value", `${h[i]}:${min[0]}`);
+              op1.innerHTML = `${h[i]}:${min[0]}0`;
               combo2.appendChild(op1);
-              let op2 = document.createElement("option");
-              op2.setAttribute("value", `${sati[i]}:${minuti[1]}`);
-              op2.innerHTML = `${sati[i]}:${minuti[1]}`;
-              combo2.appendChild(op2);
           }
   
-          //Dodavanje clasa
-          div.classList.add("stilModal");
-          div.classList.add("centrirano");
-          divCentar.classList.add("centrirano")
-          div2.classList.add("stilDiv2")
+         
+
+          
+          
+          div.classList.add("style-this");
+          div.classList.add("center-mid");
+          centerDiv.classList.add("center-mid")
+          div2.classList.add("style-div-2")
   
-          //Dodavanje elemenata na stranicu
+          
+
+
           div.appendChild(div2)
-          div.appendChild(divCentar);
-          div.appendChild(zatvori);
-          divCentar.appendChild(div2)
-          div2.appendChild(naslov);
-          div2.appendChild(forma);
-          forma.appendChild(x1)
-          forma.appendChild(txtBox);
-          forma.appendChild(x2)
-          forma.appendChild(combo1);
-          forma.appendChild(x3)
-          forma.appendChild(combo2);
-          forma.appendChild(dugme);
-          forma.appendChild(x4);
-          /* forma.appendChild(cBox); */
+          div.appendChild(centerDiv);
+          div.appendChild(close);
+          centerDiv.appendChild(div2)
+          div2.appendChild(title);
+          div2.appendChild(from);
+          from.appendChild(x1)
+          from.appendChild(txtBox);
+          from.appendChild(x2)
+          from.appendChild(combo1);
+          from.appendChild(x3)
+          from.appendChild(combo2);
+          from.appendChild(btn);
+          from.appendChild(x4);
+          /* from.appendChild(cBox); */
           document.body.appendChild(div);
   
-          //Zatvaranje modala
-          zatvori.addEventListener("click", () => {
-              console.log("lmao")
-              div.classList.add("zatvoriSliku");
+
+
+          
+          close.addEventListener("click", () => {
+              div.classList.add("img-close");
               document.body.removeChild(div);
-              otvorenModal = false;
+              openThis = false;
           })
+
+
+
+
   
-          dugme.addEventListener("click", () => {
-              if (combo2.value == "Izaberite vreme") {
-                  x3.classList.remove("sakrij");
+          btn.addEventListener("click", () => {
+              if (combo2.value == "Choose your time") {
+                  x3.classList.remove("hide");
               }
-              if (combo2.value != "Izaberite vreme") {
-                  x3.classList.add("sakrij");
+              if (combo2.value != "Choose your time") {
+                  x3.classList.add("hide");
               }
-              let ime = txtBox.value;
-              ime.replace(/\s\s+/g, ' ');
-              if (!nameSapmle.test(ime)) {
-                  let poljeIme = document.getElementById('poljeImeD');
-                  if (ime == "" || !ime.trim()) {
-                      poljeIme.innerHTML = "Niste popunili Ime i prezime!";
+              let name = txtBox.value;
+              name.replace(/\s\s+/g, ' ');
+              if (!nameSapmle.test(name)) {
+                  let namePlace = document.getElementById('d-name');
+                  if (name == "" || !name.trim()) {
+                    namePlace.innerHTML = "Write the name!";
                   }
                   else {
-                      poljeIme.innerHTML = "Pogšan unos imena i prezimena!";
+                    namePlace.innerHTML = "Wrong name entry!";
                   }
-                  poljeIme.classList.remove('sakrij');
+                  namePlace.classList.remove('hide');
               }
-              if (nameSapmle.test(ime)) {
-                  let poljeIme = document.getElementById('poljeImeD');
-                  poljeIme.classList.add('sakrij');
+              if (nameSapmle.test(name)) {
+                  let namePlace = document.getElementById('d-name');
+                  namePlace.classList.add('hide');
               }
               if (isNaN(combo1.valueAsNumber)) {
-                  x2.classList.remove("sakrij")
+                  x2.classList.remove("hide")
               }
               if (!isNaN(combo1.valueAsNumber)) {
-                  x2.classList.add("sakrij");
+                  x2.classList.add("hide");
               }
   
-              if (combo2.value != "Izaberite vreme" && nameSapmle.test(ime) && !isNaN(combo1.valueAsNumber)) {
-                  x4.classList.remove("sakrij");
+              if (combo2.value != "Choose your time" && nameSapmle.test(name) && !isNaN(combo1.valueAsNumber)) {
+                  x4.classList.remove("hide");
               }
               else {
-                  x4.classList.add("sakrij");
+                  x4.classList.add("hide");
               }
           })
       }
   });
+
+
+
+
+
+  var jumpThis1 = document.getElementById("open-1");
+  let openThis1 = false;
+  jumpThis1.addEventListener("click", () => {
+  
+     
+      if (!openThis1) {
+
+        openThis1 = true;
+
+          let div = document.createElement("div");
+          let div2 = document.createElement("div");
+          div2.setAttribute("class", "clr-back")
+          div2.setAttribute("id", "div-cont");
+
+          let centerDiv = document.createElement("div");
+          let title = document.createElement("h2");
+          title.textContent = "Schedule the training";
+
+          let from = document.createElement("form")
+          from.setAttribute("method", "post");
+          from.setAttribute("id", "meeting");
+
+          let close = document.createElement("i")
+          close.setAttribute("class", "fas fa-times pozX")
+  
+          
+         
+         
+         
+          let txtBox = document.createElement("input");
+          txtBox.setAttribute("type", "text");
+          txtBox.setAttribute("placeholder", "Full name:");
+          txtBox.setAttribute("class", "form-control");
+          txtBox.setAttribute("id", "txtBoxModal")
+
+          let x1 = document.createElement("span");
+          x1.setAttribute("class", "clr-word hide");
+          x1.setAttribute("id", "d-name")
+          x1.textContent = "Wrong name!"
+
+          let x2 = document.createElement("span");
+          x2.setAttribute("class", "clr-word hide");
+          x2.textContent = "Choose the date!"
+
+          let x3 = document.createElement("span");
+          x3.setAttribute("class", "clr-word hide");
+          x3.textContent = "Choose the time!"
+
+          let x4 = document.createElement("p");
+          x4.setAttribute("class", "hide text-form-sent")
+          x4.innerHTML = "Training is scheduled!";
+
+          let btn = document.createElement("button")
+          btn.setAttribute("type", "button")
+          btn.setAttribute("class", "btn-form")
+          btn.setAttribute("value", "Send")
+          btn.textContent = "Send"
+
+
+
+
+
+          let mainDate = new Date();
+          let year = mainDate.getFullYear();
+          let month = mainDate.getMonth() + 1;
+          let day = mainDate.getDate() + 1;
+          let maxMonth = mainDate.getMonth() + 2;
+          let maxYear = mainDate.getFullYear();
+  
+          if (month == 12) {
+             maxYear++;
+              maxMonth = "01";
+          }
+          if (month + 1 < 10)
+             month = `0${month}`;
+          if (month + 2 < 10)
+             maxMonth = `0${month}`
+          if (day < 10)
+             day = `0${day}`;
+          /* console.log(year + "-" + month + "-" + day)
+          console.log(maxYear + "-" + maxMonth + "-" + day) */
+          let combo1 = document.createElement("input");
+          combo1.setAttribute("value", year + "-" + month + "-" + day)
+          combo1.setAttribute("id", "scheduleTime");
+          combo1.setAttribute("type", "date");
+          combo1.setAttribute("class", "form-control")
+          combo1.setAttribute("min", year + "-" + month + "-" + day);
+          combo1.setAttribute("max", maxYear + "-" + maxMonth + "-" + day);
+  
+          
+          
+          
+          
+          let combo2 = document.createElement("select");
+          combo2.setAttribute("id", "meeting-1");
+          combo2.setAttribute("class", "form-control")
+          let op = document.createElement("option");
+          op.setAttribute("value", "Choose your time");
+          op.innerHTML = "Choose your time";
+          combo2.appendChild(op);
+
+
+
+  
+          let h = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+          let min = [0];
+  
+          for (let i = 0; i < h.length; i++) {
+              let op1 = document.createElement("option");
+              op1.setAttribute("value", `${h[i]}:${min[0]}`);
+              op1.innerHTML = `${h[i]}:${min[0]}0`;
+              combo2.appendChild(op1);
+          }
+  
+         
+
+          
+          
+          div.classList.add("style-this");
+          div.classList.add("center-mid");
+          centerDiv.classList.add("center-mid")
+          div2.classList.add("style-div-2")
+  
+          
+
+
+          div.appendChild(div2)
+          div.appendChild(centerDiv);
+          div.appendChild(close);
+          centerDiv.appendChild(div2)
+          div2.appendChild(title);
+          div2.appendChild(from);
+          from.appendChild(x1)
+          from.appendChild(txtBox);
+          from.appendChild(x2)
+          from.appendChild(combo1);
+          from.appendChild(x3)
+          from.appendChild(combo2);
+          from.appendChild(btn);
+          from.appendChild(x4);
+          /* from.appendChild(cBox); */
+          document.body.appendChild(div);
+  
+
+
+          
+          close.addEventListener("click", () => {
+              div.classList.add("img-close");
+              document.body.removeChild(div);
+              openThis1 = false;
+          })
+
+
+
+
+  
+          btn.addEventListener("click", () => {
+              if (combo2.value == "Choose your time") {
+                  x3.classList.remove("hide");
+              }
+              if (combo2.value != "Choose your time") {
+                  x3.classList.add("hide");
+              }
+              let name = txtBox.value;
+              name.replace(/\s\s+/g, ' ');
+              if (!nameSapmle.test(name)) {
+                  let namePlace = document.getElementById('d-name');
+                  if (name == "" || !name.trim()) {
+                    namePlace.innerHTML = "Write the name!";
+                  }
+                  else {
+                    namePlace.innerHTML = "Wrong name entry!";
+                  }
+                  namePlace.classList.remove('hide');
+              }
+              if (nameSapmle.test(name)) {
+                  let namePlace = document.getElementById('d-name');
+                  namePlace.classList.add('hide');
+              }
+              if (isNaN(combo1.valueAsNumber)) {
+                  x2.classList.remove("hide")
+              }
+              if (!isNaN(combo1.valueAsNumber)) {
+                  x2.classList.add("hide");
+              }
+  
+              if (combo2.value != "Choose your time" && nameSapmle.test(name) && !isNaN(combo1.valueAsNumber)) {
+                  x4.classList.remove("hide");
+              }
+              else {
+                  x4.classList.add("hide");
+              }
+          })
+      }
+  });
+
+
+
+
+
+
+
+
+
+
+
+const toTop = document.querySelector(".to-up");
+
+
+function heightCheck (){
+    if (window.scrollY > 800){
+        toTop.style.display = "flex";
+    }
+    else{
+        toTop.style.display= "none";
+    }
+}
+
+window.addEventListener('scroll', heightCheck)
+
+toTop.addEventListener('click', ()=>{
+    window.scrollTo({
+        top: 0
+    })
+})

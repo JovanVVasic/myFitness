@@ -498,7 +498,7 @@ footer .right-footer p a{
     color: #009933;
     font-size: 50px;
   }
-  .stilModal {
+  .style-this {
       display: block; 
       position: fixed; 
       z-index: 1; 
@@ -515,7 +515,7 @@ footer .right-footer p a{
       align-items: center;
       width: 100%;
   }
-    .centrirano{
+    .center-mid{
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -550,7 +550,7 @@ footer .right-footer p a{
   .relativno{
     position: relative;
   }
-  .stilModal,
+  .style-this,
   .stilCaption,
   .stilNaslov {
     animation-name: zoom;
@@ -590,11 +590,11 @@ footer .right-footer p a{
     cursor: pointer;
   }
 
-  .zatvoriSliku {
+  .img-close {
     display: none !important;
   }
 
-  .stilDiv2{
+  .style-div-2{
     padding:70px 20px 70px 20px;
     background-color: rgba(0, 174, 218, 0.8);
     display: flex;
@@ -603,29 +603,29 @@ footer .right-footer p a{
     justify-content: space-between;
     width: 400px;
   }
-  #divKontejner>input, #divKontejner>option{
+  #div-cont>input, #div-cont>option{
     margin-bottom: 20px;
   }
   .crveniOkvir{
     border:1px solid red;
   }
-  #formaSastanak{
+  #meeting{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch !important;
     justify-content:center;
   }
-  #formaSastanak select, input{
+  #meeting select, input{
     margin-bottom: 20px;
   }
-  #formaSastanak input{
+  #meeting input{
     padding:5px;
   } 
   #upozorenjeEmail{
     height: 21px;
   }
-  .poslataFormaText{
+  .text-form-sent{
     color: white;
     text-align: center;
     font-size: 25px;
@@ -634,7 +634,28 @@ footer .right-footer p a{
   #uspesnoPoslato{
     margin-top: 30px;
   }
-  .sakrij{
+  .hide{
     visibility: hidden;
     padding-left: 30px;
+}
+.pozX{
+    position: relative;
+    top: -280px;
+}
+.clr-word{
+    color:white;
+}
+
+.to-up{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+.fa-arrow-alt-circle-up{
+    color: rgba(0, 174, 218, 1);
+    font-size: 50px;
+}
+.fa-arrow-alt-circle-up:hover{
+    color: black;
+    transition: 0.6s;
 }
