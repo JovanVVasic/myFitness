@@ -3,6 +3,9 @@
     padding: 0px;
     font-family: sans-serif;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     background-color: rgb(60, 60, 60);
 }
@@ -23,9 +26,12 @@ header nav ul li{
     display: inline-block;
     margin: 0px 20px;
 }
-header nav ul li a{
-    text-decoration: none;
+header nav ul li a {
     color: white;
+    text-decoration: none;
+}
+.active{
+   border-bottom: 3px solid rgb(60, 60, 60);
 }
 header #logo{
     margin-left: 200px;
@@ -469,3 +475,11 @@ footer .right-footer p a{
 .p-clr{
     color: gray;
 }
+.on-focus{
+    background-color: rgb(60, 60, 60);
+}
+.b-shadow{
+    border-bottom: 3px solid rgb(60, 60, 60) ;
+}
+
+
