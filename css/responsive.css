@@ -170,6 +170,9 @@
     .pozX{
         top: -200px;
     }
+    .fa-arrow-alt-circle-up{
+        right:10px;
+    }
 }
 
 @media only screen and (max-width: 376px){
