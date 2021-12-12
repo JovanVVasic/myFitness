@@ -1,0 +1,197 @@
+@media only screen and (max-width: 1025px){
+    header{
+        font-size: 12px;
+    }
+    header nav ul li{
+        margin: 0px 15px;
+    }
+    #begin{
+        background-position: center;
+    }
+    #begin .begin-style .inside .get-started a{
+        font-size: 17px;
+    }
+    #photo-style{
+        width: 300px;
+        height: 600px;
+    }
+    #promise .promise-style .promise-style-more .more{
+        margin-top: 0px;
+        /* height: 25%; */
+    }
+    #promise .promise-style .promise-style-more .more .more-text p{
+        top: -100px;
+    }
+    /* .last-of{
+        position: relative;
+        top: -100px;
+    } */
+   .photo1, .photo2, .photo3, .photo4{
+       background-position: center;
+   }
+   #bfr-connect{
+       background-position: center;
+   }
+   #bfr-connect .bfr-connect-inside .bfr-connect-btn a{
+       font-size: 17px;
+   }
+   #conainer{
+       background-position: center;
+   }
+   .a-image{
+       background-position: center;
+   }
+}
+@media only screen and (max-width: 769px){
+    
+    header nav{
+        margin-right: 100px;
+    }
+    header nav ul li{
+        margin: 0px 5px;
+    }
+    header #logo{
+        margin-left: 100px;
+    }
+    #begin .begin-style .inside .get-started a{
+        font-size: 13px;
+    }
+    .hide-this{
+        visibility: hidden;
+    }
+    .b-shadow{
+        border-bottom: 0px;
+    }
+    #bfr-connect .bfr-connect-inside .bfr-connect-btn a{
+        font-size: 13px;
+    }
+    #packages .packages-more .packages-more-text .get-plan{
+        font-size: 15px;
+    }
+    .pozX{
+        right: 60px;
+        top: -240px;
+        font-size: 30px;
+    }
+    .p-clr{
+        font-size: 12px;
+    }
+    .fa-arrow-alt-circle-up{
+        font-size: 30px;
+    }
+}
+@media only screen and (max-width: 426px){
+    footer .right-footer p a{
+        font-size: 8px;
+    }
+    footer .left-footer .social p a{
+        font-size: 8px;
+    }
+    .p-clr{
+        font-size: 8px;
+    }
+    header nav{
+        margin-right: 30px;
+    }
+    header nav ul li{
+        margin: 0px 2px;
+    }
+    header #logo{
+        margin-left: 20px;
+    }
+    header{font-size: 10px;}
+    #begin .begin-style .inside h1{
+        font-size: 20px;
+    }
+    #begin .begin-style .inside p{
+        font-size: 15px;
+    }
+    #begin .begin-style .inside .get-started a{
+        font-size: 9px;
+        position: relative;
+        top: 2px;
+    }
+    #info .info-style{
+        display: flex;
+        flex-direction: column;
+    }
+    #info .info-style .info-style-more{
+        margin: 0px auto;
+        width: 400px;
+        height: 28%;
+
+    }
+    .fas, .far{
+        font-size: 25px;
+        position: relative;
+        top: -17px;
+    }
+    .icon-info{
+        position: relative;
+        top:50px;
+    }
+    .left-inside{
+        position: relative;
+        left: 40px;
+    }
+    .right-inside{
+        position: relative;
+        right: 40px;
+    }
+    .strong-style-more h1{
+        font-size: 20px;
+    }
+    .difference-style-more h1{
+        font-size: 20px;
+    }
+    
+    #bfr-connect .bfr-connect-inside .bfr-connect-btn{
+        width: 100px;
+    }
+    #bfr-connect .bfr-connect-inside .bfr-connect-btn a{
+        font-size: 11px;
+        position: relative;
+        top: 5px;
+    }
+    .price{
+        font-size: 30px;
+        position: relative;
+        top: 160px;
+    }
+    .get-plan{
+        position: relative;
+        top: 160px;
+    }
+    #packages .packages-more .packages-more-text .get-plan p{
+        position: relative;
+        top: 13px;
+        font-size: 12px;
+    }
+    .pozX{
+        top: -200px;
+    }
+}
+
+@media only screen and (max-width: 376px){
+    #info .info-style .info-style-more{
+        width: 300px;
+    }
+    #logo{
+        visibility: hidden;
+    }
+    header{
+        width: 375px;
+    }
+    header nav{
+        margin-right: 30px;
+        
+    }
+    #begin .begin-style{
+       display: none;
+    }
+    .fa-arrow-alt-circle-up{
+        display: none;
+    }
+}
+    
+

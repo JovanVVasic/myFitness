@@ -73,6 +73,21 @@ $(document).ready(function () {
 
 
 
+let emailSample = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/;
+
+let button = document.getElementById('button').addEventListener('click', () =>{
+    let email = document.getElementById('text-box');
+    let span  =  document.getElementById('span');
+    let em=email.value;
+    
+    if (!emailSample.test(em)){
+        span.innerHTML='Wrong email...'
+    }
+    else{
+        span.innerHTML='Email sent!'
+    }
+});
+
 
 
 
